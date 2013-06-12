@@ -343,7 +343,15 @@ availableBoms:
    groupId: org.jboss.bom
    artifactId: gatein-3.5-bom
    recommendedVersion: 1.0.0.Final-redhat-2
-      
+
+ - &gatein-3_6-bom
+   id: gatein-3_6-bom
+   name: GateIn Portal 3.6 BOM
+   description: Bill of Materials for GateIn Portal 3.6
+   groupId: org.jboss.bom
+   artifactId: gatein-3.6-bom
+   recommendedVersion: 1.0.0.Beta02
+   
 #####################################################################################
 #                                                                                   #
 #   L I S T    O F    A L L     A V A I L A B L E    B O M      V E R S I O N S     #
@@ -982,9 +990,9 @@ availableBomVersions:
    }
    
 
-   ##############################
-   #   GateIn Portal 3.5 BOM    #
-   ##############################
+   #######################################
+   #   GateIn Portal 3.5 BOM (JPP 6.0)   #
+   #######################################
 
  - &gatein-3_5-bom-jpp6
    id: gatein-3_5-bom-jpp6
@@ -994,6 +1002,16 @@ availableBomVersions:
       JPP6RepositoryRequired: true,
    }
 
+
+   ##############################
+   #   GateIn Portal 3.6 BOM    #
+   ##############################
+
+ - &gatein-3_6-bom-100
+   id: gatein-3_6-bom-100
+   bom: *gatein-3_6-bom
+   version: 1.0.0.Beta02
+   labels: {}
    
     
 ##############################################################################
@@ -1475,6 +1493,29 @@ availableRuntimes:
         wtp-runtime-type: org.jboss.ide.eclipse.as.runtime.eap.60,
     }
 
+    
+   ##################
+   #  GateIn 3.6.0  #
+   ##################
+
+ - &gatein360runtime
+   id: gatein360runtime
+   name: GateIn Portal 3.6.0
+   version: 3.6.0
+   license: *lgpl
+   url: http://downloads.jboss.org/gatein/Releases/Portal/3.6.0.Beta02/GateIn-3.6.0.Beta02-jbossas-7.zip
+   boms:
+    - *gatein-3_6-bom-100
+   defaultBom: *gatein-3_6-bom-100
+   defaultArchetype: 
+   archetypes:
+   labels: {
+        runtime-category: SERVER,
+        runtime-type: GateIn,
+        runtime-size: 210299486,
+        wtp-runtime-type: org.jboss.ide.eclipse.gatein.runtime.36,
+    }
+    
 ##########################################################
 #                                                        #
 #   L I S T    O F    A L L     R E L E A S E S          #
@@ -1526,8 +1567,16 @@ minorReleases:
    name: JBoss Portal Platform
    version: 6.0
    recommendedRuntime: *jbossjpp600runtime
-   
-   
+
+   ##################
+   #   GateIn 3.6   #
+   ##################
+
+ - &gatein360
+   name: GateIn Portal
+   version: 3.6
+   recommendedRuntime: *gatein360runtime
+
 
 ############################################
 
@@ -1568,6 +1617,12 @@ majorReleases:
    minorReleases:
     - *jpp600
     
-    
+   ##################
+   #   GateIn 3     #
+   ##################
 
-
+ - name: GateIn Portal
+   version: 3
+   recommendedRuntime: *gatein360runtime
+   minorReleases:
+    - *gatein360
