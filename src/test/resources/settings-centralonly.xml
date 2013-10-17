@@ -18,9 +18,55 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
     <profiles>
-
+        <profile>
+            <id>jboss-public-repository-group</id>
+            <repositories>
+        <repository>
+          <id>rh-all</id>
+          <url>http://maven.repository.redhat.com/techpreview/all</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+                <repository>
+          <!-- This repository will not be necessary when JBoss Portlet Bridge will be mirrored on Maven Central -->
+                    <id>jboss-public-repository-group</id>
+                    <name>JBoss Public Maven Repository Group</name>
+                    <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+                    <updatePolicy>never</updatePolicy>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </repository>
+                <repository>
+          <!-- This repository will not be necessary when JBoss Portlet Bridge will be mirrored on Maven Central -->
+                    <id>wfk-2.4</id>
+                    <name>wfk-2.4</name>
+                    <url>file:///home/data/servers/jboss-wfk-2.4.0.ER1-maven-repository/</url>
+                    <updatePolicy>never</updatePolicy>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
     </profiles>
-
     <activeProfiles>
+        <activeProfile>jboss-public-repository-group</activeProfile>
     </activeProfiles>
 </settings>

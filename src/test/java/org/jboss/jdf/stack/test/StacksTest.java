@@ -241,6 +241,7 @@ public class StacksTest {
                     Maven.configureResolver().fromClassloaderResource("settings-centralonly.xml", getClass().getClassLoader()).resolve(artifact).withoutTransitivity().asFile();
                 }
             } catch (ResolutionException e) {
+                log.error("Can't resolve Bom [" + artifact + "] ", e);
                 Assert.assertNull("Can't resolve Bom [" + artifact + "] ", e);
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
